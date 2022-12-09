@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\AVL">
+      <UniqueIdentifier>{db389538-afba-4643-a06c-e07799b7fec9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Image Include="AVL\AVL slides\avl_insert.PNG">
@@ -42,7 +45,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AVL\AVL.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\AVL</Filter>
+    </ClInclude>
+    <ClInclude Include="AVL\AVL.hpp">
+      <Filter>Header Files\AVL</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
