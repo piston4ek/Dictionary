@@ -4,7 +4,7 @@
 // @author Yurii Krasniuk,								//
 // Igor Sykorsky KPI									//
 //------------------------------------------------------//
-// @based on works by Prof. Wade Fagen-Ulmschneider,	//
+// @author Prof. Wade Fagen-Ulmschneider	            //
 // @author Eric Huber									//
 // University of Illinois Urbana-Champaign				//
 //------------------------------------------------------//
@@ -18,7 +18,8 @@
 #include <utility>		// swap()
 #include <algorithm>	// max()
 #include <stdexcept>	// process exceptions
-
+#include <iostream>		// output in file or console
+#include <string>		// to_string()
 
 template <class K, class D>
 class AVL
@@ -50,6 +51,10 @@ private:
 		TreeNode* left;
 		TreeNode* right;
 		int height;
+
+		TreeNode(const K& key, const D& data)
+			: key(key), data(data),
+			left(nullptr), right(nullptr), height(0) {}
 	};
 
 	TreeNode* m_root;
@@ -80,6 +85,12 @@ private:
 	// is the earliest ancestor; this makes things more convenient and helps
 	// us avoid making a mistake in the logic.
 	const D& m_iopRemove(TreeNode*& targetNode);
+	// The iopAncestor argument tracks the nodes being traversed on the way
+	// down as we search for the IOP that can be swapped with the target.
+	// When the single-parameter version of _iopRemove calls this other
+	// version, it needs to pass "true" for the isInitialCall argument.
+	// We check that in the implementation to catch a certain edge case.
+	const D& m_iopRemove(TreeNode*& targetNode, TreeNode*& iopAncestor, bool isInitialCall);
 
 	// _swap_nodes: This swaps the node positions (rewiring pointers as
 	// necessary) and also swaps the node heights. The intended usage is
@@ -104,7 +115,7 @@ private:
 	// in the node. These changes need to cascade upward, so after we call
 	// this function, we need to make sure that it also gets called on those
 	// nodes on the path of ancestry up towards the root node.
-	void _ensureBalance(TreeNode*& cur);
+	void m_ensureBalance(TreeNode*& cur);
 
 	// These functions perform the specified balancing rotation on the
 	// subtree that is rooted at the specified node.
@@ -136,7 +147,8 @@ private:
 
 	// _get_balance_factor: A helper function for safely calculating the balance
 	// factor of the node that is passed as the argument.
-	int m_get_balance_factor(TreeNode*& node) const {
+	int m_get_balance_factor(TreeNode*& node) const
+	{
 		if (!node)
 		{
 			// A non-existent node has a balance factor of 0
@@ -163,7 +175,7 @@ public:
 		{
 			// As long as the head pointer isn't null, we can just look at
 			// what the key is and call remove based on that.
-			remove(head_->key);
+			remove(m_root->key);
 		}
 	}
 	// Destructor: We just clear the tree.
@@ -172,13 +184,15 @@ public:
 		clear_tree();
 	}
 
-	// printInOrder: Print the tree contents to std::cout using an in-order
-	// traversal. The "_printInOrder" version is for internal use by the
+	// Prints methods
+
+	// printInOrder: Print the tree contents to std::ostream using an in-order
+	// traversal. The "m_printInOrder" version is for internal use by the
 	// public wrapper function "printInOrder".
 public:
-	void printInOrder() const;
+	void printInOrder(std::ostream& os) const;
 private:
-	void m_printInOrder(TreeNode* node) const;
+	void m_printInOrder(std::ostream& os,TreeNode* node) const;
 };
 
 // Sometimes, your header files might include another header file with
