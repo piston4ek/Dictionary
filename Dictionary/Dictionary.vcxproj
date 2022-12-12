@@ -133,12 +133,15 @@
     <Image Include="AVL\AVL slides\generic_left_rotation.PNG" />
     <Image Include="AVL\AVL slides\generic_right_left_rotation.PNG" />
     <Image Include="AVL\AVL slides\left_rotation_alg.PNG" />
+    <Image Include="AVL\AVL slides\orders_traversal.jpg" />
     <Image Include="AVL\AVL slides\right_left_rotation_alg.PNG" />
     <Image Include="AVL\AVL slides\rotation_summary.PNG" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AVL\AVL.h" />
     <ClInclude Include="AVL\AVL.hpp" />
+    <ClInclude Include="AVL\AVL_print.hpp" />
+    <ClInclude Include="Dictionary.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

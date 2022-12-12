@@ -16,6 +16,9 @@
     <Filter Include="Header Files\AVL">
       <UniqueIdentifier>{db389538-afba-4643-a06c-e07799b7fec9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Dictionary">
+      <UniqueIdentifier>{c1426b3e-7061-4fe0-a5c3-78b3cdf092cd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Image Include="AVL\AVL slides\avl_insert.PNG">
@@ -42,12 +45,21 @@
     <Image Include="AVL\AVL slides\rotation_summary.PNG">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="AVL\AVL slides\orders_traversal.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AVL\AVL.h">
       <Filter>Header Files\AVL</Filter>
     </ClInclude>
     <ClInclude Include="AVL\AVL.hpp">
+      <Filter>Header Files\AVL</Filter>
+    </ClInclude>
+    <ClInclude Include="Dictionary.h">
+      <Filter>Header Files\Dictionary</Filter>
+    </ClInclude>
+    <ClInclude Include="AVL\AVL_print.hpp">
       <Filter>Header Files\AVL</Filter>
     </ClInclude>
   </ItemGroup>
